@@ -6,10 +6,10 @@ design and task backlog
 -----------------------
 [x] use AppEngine (no hosting, easy to setup and upload, high availability)
 [ ] create page that downloads www.python.org and prints response time
-  [ ] use URL Fetch API http://code.google.com/appengine/docs/python/urlfetch/
+  [x] use URL Fetch API http://code.google.com/appengine/docs/python/urlfetch/
   [ ] process exceptions (needs two levels - warning and fails)
     [ ] download size exceeded sane amount (hardcoded 200k)
-    [ ] timeout fail
+    [x] timeout fail
     [ ] warning if response is too slow (hardcoded 5 seconds)
 [ ] store response time in DB
 [ ] store failures 
@@ -20,6 +20,7 @@ design and task backlog
   [ ] show warnings on Graphite diagram
   [ ] show failures
 [ ] cron job to ping every minute
+    http://code.google.com/appengine/docs/python/config/cron.html
 ---
 [ ] feature creep
   [ ] self-accessment, i.e. register warn if time between requests is more than

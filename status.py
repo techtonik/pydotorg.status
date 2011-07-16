@@ -24,6 +24,7 @@ def check(url, timeout=TIMEOUT):
   '''
   try:
     result = urlfetch.fetch(URL, deadline=TIMEOUT)
+  # [ ] investigate other fetch() exceptions
   except urlfetch.DeadlineExceededError:
     return (FAIL, 'Timeout exceeded (%s sec)' % TIMEOUT)
   else:
@@ -37,6 +38,4 @@ def check(url, timeout=TIMEOUT):
 print 'status of python.org services\n'
 status, details = check(URL)
 print SVC, ' - ', URL, ' - ', status, '-', details
-
-# [ ] investigate other fetch() exceptions
 

@@ -12,6 +12,7 @@ design and task backlog
     [x] timeout fail
     [ ] warning if response is too slow (hardcoded 5 seconds)
 [ ] store response time in DB
+[ ] limit stored data rate to 1 record per minute
 [ ] store failures 
 [ ] show last seven measurements
 [ ] memcache last measurements
@@ -27,6 +28,8 @@ design and task backlog
   [ ] port to different frameworks for comparison
   [ ] show AppEngine CPU/MEM/etc. usage on the main page
     [ ] display similar Graphite diagram when clicked
+  [ ] add guard for unknown failures/exceptions
+    [ ] email/xmpp unknown failures/exceptions
 
 
 

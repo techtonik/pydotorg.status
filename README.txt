@@ -20,6 +20,13 @@ design and task backlog
   [ ] show warnings on Graphite diagram
   [ ] show failures
 [ ] cron job to ping every minute
+---
+[ ] feature creep
+  [ ] self-accessment, i.e. register warn if time between requests is more than
+  [ ] port to different frameworks for comparison
+  [ ] show AppEngine CPU/MEM/etc. usage on the main page
+    [ ] display similar Graphite diagram when clicked
+
 
 
 License :: Public Domain or MIT

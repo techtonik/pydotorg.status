@@ -13,8 +13,8 @@ design and task backlog
     [ ] warning if response is too slow (hardcoded 5 seconds)
 [ ] store response time in DB
 [ ] limit stored data rate to 1 record per minute
-[ ] store failures 
-[ ] show last seven measurements
+[x] store failures
+[x] show last seven measurements
 [ ] memcache last measurements
 [ ] add Graphite output to index page
   [ ] show response time on Graphite graph (Y - latency, X - measurement date)

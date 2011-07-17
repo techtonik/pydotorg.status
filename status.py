@@ -9,6 +9,7 @@ URL = 'http://python.org'
 
 from google.appengine.api import urlfetch
 from google.appengine.ext import db
+from google.appengine.ext.webapp import template
 
 # -- helpers --
 OK = 'OK'
@@ -43,11 +44,14 @@ class Sample(db.Model):
 
 
 # -- the app --
-print 'status of python.org services\n'
+title = 'status of python.org services'
 status, details = check(URL)
-print SVC, ' - ', URL, ' - ', status, '-', details
 
 Sample(status=status, details=details).put()
 
-print 'last 7 probes: ',
-print [x.status for x in reversed(Sample.all().order('-time').fetch(limit=7))]
+probes = Sample.all().order('-time').fetch(limit=7)
+
+print template.render('templates/status.html',
+                      dict(title=title,
+                           service=SVC, url=URL, status=status, details=details,
+                           probes=probes))

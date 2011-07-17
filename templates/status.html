@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+</head>
+<body>
+<pre>
+{{title}}
+
+{{service}}  -  {{url}}  -  {{status}} - {{details}}
+last {{probes|length}} probes: {% for pb in probes %} {{pb.status}} {% endfor %}
+</pre>
+</body>
+</html>

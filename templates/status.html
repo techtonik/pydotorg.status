@@ -4,11 +4,14 @@
   <title>{{title}}</title>
 </head>
 <body>
-<pre>
-{{title}}
-
-{{service}}  -  {{url}}  -  {{status}} - {{details}}
-last {{probes|length}} probes: {% for pb in probes %} {{pb.status}} {% endfor %}
-</pre>
+<code>
+<div>{{title}}</div>
+<br/>
+<div>{{service}}  -  {{url}}  -  {{status}} - {{details}}</div>
+last {{probes|length}} probes:
+  {% for pb in probes %}
+<span class='probe' title='{{pb.time|date:"Y-m-d H:m:s"}}'>{{pb.status}}</span>
+  {% endfor %}
+</code>
 </body>
 </html>

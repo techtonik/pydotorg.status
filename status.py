@@ -28,10 +28,11 @@ def check(url, timeout=TIMEOUT):
   except urlfetch.DeadlineExceededError:
     return (FAIL, 'Timeout exceeded (%s sec)' % TIMEOUT)
   else:
+    status = unicode(result.status_code)
     if result.status_code == 200:
-      return (OK, result.status_code)
+      return (OK, status)
     else:
-      return (UNKNOWN, result.status_code)
+      return (UNKNOWN, status)
 
 
 # -- models ---
@@ -49,4 +50,4 @@ print SVC, ' - ', URL, ' - ', status, '-', details
 Sample(status=status, details=details).put()
 
 print 'last 7 probes: ',
-print [x.status for x in Sample.all().order('-time').fetch(limit=7)]
+print [x.status for x in reversed(Sample.all().order('-time').fetch(limit=7))]

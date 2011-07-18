@@ -9,8 +9,8 @@
 <br/>
 <div>{{service}}  -  {{url}}  -  {{status}} - {{details}}</div>
 last {{probes|length}} probes:
-  {% for pb in probes %}
-<span class='probe' title='{{pb.time|date:"Y-m-d H:m:s"}}'>{{pb.status}}</span>
+  {% for pb in probes reversed %}
+<span class='probe' title='{{pb.time|date:"Y-m-d H:i:s"}}'>{{pb.status}}</span>
   {% endfor %}
 </code>
 </body>

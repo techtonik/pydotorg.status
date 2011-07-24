@@ -11,7 +11,7 @@ design and task backlog
     [ ] download size exceeded sane amount (hardcoded 200k)
     [x] timeout fail
     [ ] warning if response is too slow (hardcoded 5 seconds)
-[ ] store response time in DB
+[x] store response time in DB
 [ ] limit stored data rate to 1 record per minute
 [x] store failures
 [x] show last seven measurements

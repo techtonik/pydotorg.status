@@ -7,11 +7,21 @@
 <code>
 <div>{{title}}</div>
 <br/>
-<div>{{service}}  -  {{url}}  -  {{status}} - {{details}}</div>
+<div>{{service}}  -  {{url}}  -  {{status}} - {{details}} in {{latencyms|floatformat:2}}ms</div>
+<div>
 last {{probes|length}} probes:
   {% for pb in probes reversed %}
 <span class='probe' title='{{pb.time|date:"Y-m-d H:i:s"}}'>{{pb.status}}</span>
   {% endfor %}
+</div>
 </code>
+
+<br/>
+<div>
+  <code class="help latency" style="font-size:small; visibility:hidden">
+    * latency is the sum of time of App Engine making request and remote server sending reply
+  </code>
+</div>
+
 </body>
 </html>

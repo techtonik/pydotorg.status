@@ -74,5 +74,6 @@ probes = Sample.all().order('-time').fetch(limit=7)
 print template.render('templates/status.html',
                       dict(title=title,
                            service=SVC, url=URL,
-                           status=status, details=details, latencyms=latency*1000,
+                           status=last_probe.status, details=last_probe.details,
+                           latencyms=last_probe.latency*1000,
                            probes=probes))

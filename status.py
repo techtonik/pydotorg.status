@@ -7,9 +7,13 @@ URL = 'http://python.org'
 
 # -- imports --
 
+from google.appengine.api import memcache
 from google.appengine.api import urlfetch
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
+
+from datetime import datetime, timedelta
+import logging
 
 # -- helpers --
 OK = 'OK'
@@ -51,10 +55,20 @@ class Sample(db.Model):
 
 # -- the app --
 title = 'status of python.org services'
-status, details, latency = check(URL)
 
-Sample(status=status, details=details, latency=latency).put()
 
+# probe site, limit attempts to one per minute
+last_probe = memcache.get("last_probe")
+if last_probe == None:
+  last_probe = Sample.all().order('-time').get()
+if datetime.now() - last_probe.time > timedelta(minutes=1):
+  status, details, latency = check(URL)
+  last_probe = Sample(status=status, details=details, latency=latency)
+  last_probe.put()
+  if not memcache.set('last_probe', last_probe):
+    logging.error('Memcache set failed for last probe.')
+
+# render stats for last 7 measurements
 probes = Sample.all().order('-time').fetch(limit=7)
 
 print template.render('templates/status.html',

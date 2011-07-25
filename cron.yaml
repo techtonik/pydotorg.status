@@ -1,0 +1,4 @@
+cron:
+- description: check python.org response status and latency
+  url: /
+  schedule: every 1 minutes

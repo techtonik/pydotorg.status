@@ -17,12 +17,13 @@ design and task backlog
 [x] store failures
 [x] show last seven measurements
 [ ] memcache last measurements
-    [x] memcache time of the last probe
+  [x] memcache time of the last probe
 [ ] add Graphite output to index page
   [ ] show response time on Graphite graph (Y - latency, X - measurement date)
   [ ] show warnings on Graphite diagram
   [ ] show failures
-[ ] cron job to ping every minute
+[x] cron job to ping every minute
+  [ ] move cron probe to a separate URL and secure access to it
     http://code.google.com/appengine/docs/python/config/cron.html
 ---
 [ ] feature creep

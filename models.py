@@ -2,6 +2,11 @@
 
 from google.appengine.ext import db
 
+OK = 'OK'
+FAIL = 'FAIL'
+WARNING = 'WARNING'
+UNKNOWN = 'UNKNOWN'
+
 class Sample(db.Model):
   time = db.DateTimeProperty(required=True, auto_now_add=True)
   status = db.StringProperty(required=True)

@@ -2,7 +2,6 @@
 Probe configured web-site, store result in DB and in memcache
 '''
 
-
 # -- config --
 
 TIMEOUT = 7  # seconds to wait until web service responds, 10 is AppEngine max
@@ -20,7 +19,8 @@ from datetime import datetime, timedelta
 from google.appengine.api import memcache
 from google.appengine.api import urlfetch
 
-from models import OK, FAIL, WARNING, UNKNOWN, Sample
+import models
+
 
 # -- helpers --
 
@@ -37,13 +37,14 @@ def check(url, timeout=TIMEOUT):
     latency = time.time() - latency
   # [ ] investigate other fetch() exceptions
   except urlfetch.DeadlineExceededError:
-    return (FAIL, 'Timeout exceeded (%s sec)' % TIMEOUT, float(TIMEOUT))
+    return (models.FAIL, 'Timeout exceeded (%s sec)' % TIMEOUT, float(TIMEOUT))
   else:
     status = unicode(result.status_code)
     if result.status_code == 200:
-      return (OK, status, latency)
+      return (models.OK, status, latency)
     else:
-      return (UNKNOWN, status, latency)
+      return (models.UNKNOWN, status, latency)
+
 
 # -- main --
 
@@ -51,11 +52,11 @@ def probe():
   ''' Probe site, limit attempts to one per minute, return last probe '''
   last_probe = memcache.get("last_probe")
   if last_probe == None:
-    last_probe = Sample.all().order('-time').get()
+    last_probe = models.Sample.all().order('-time').get()
   if (last_probe == None or
       datetime.now() - last_probe.time > timedelta(minutes=1)):
     status, details, latency = check(URL)
-    last_probe = Sample(status=status, details=details, latency=latency)
+    last_probe = models.Sample(status=status, details=details, latency=latency)
     last_probe.put()
     if not memcache.set('last_probe', last_probe):
       logging.error('Memcache set failed for last probe.')

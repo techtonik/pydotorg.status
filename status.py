@@ -12,7 +12,6 @@ use_library('django', '1.2')
 
 from google.appengine.api import memcache
 from google.appengine.api import urlfetch
-from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 
 from datetime import datetime, timedelta
@@ -48,12 +47,7 @@ def check(url, timeout=TIMEOUT):
 
 
 # -- models ---
-class Sample(db.Model):
-  time = db.DateTimeProperty(required=True, auto_now_add=True)
-  status = db.StringProperty(required=True)
-  details = db.StringProperty(required=True)
-  # [ ] migration for latency require=True
-  latency = db.FloatProperty(required=False)
+from models import Sample
 
 
 # -- the app --

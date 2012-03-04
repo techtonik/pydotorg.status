@@ -1,4 +1,4 @@
 cron:
 - description: check python.org response status and latency
-  url: /
+  url: /probe
   schedule: every 1 minutes

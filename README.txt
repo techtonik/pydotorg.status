@@ -34,6 +34,18 @@ design and task backlog
   [ ] add guard for unknown failures/exceptions
     [ ] email/xmpp unknown failures/exceptions
 
+maintenance backlog
+-------------------
+[x] choose Django version explicitly to avoid complains in logs
+
+user story evolution
+--------------------
+version 1: need a service to monitor python.org site
+ [x] probe that pings site every minute
+ [x] web interface to see the status
+version 2: optimize the code to squeeze into AppEngine quota
+           (currently 1 req/minute takes 30% of CPU monthly)
+ [ ] avoid template rendering overhead when probing
 
 
 License :: Public Domain or MIT

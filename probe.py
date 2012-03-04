@@ -63,5 +63,8 @@ def probe():
   return last_probe
 
 if __name__ == '__main__':
-  probe()
+  last = probe()
+  print 'Content-Type: text/plain'
+  print ''
+  print '%s - %s in %sms' % (last.status, last.details, last.latency)
 

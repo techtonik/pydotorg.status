@@ -61,7 +61,8 @@ title = 'status of python.org services'
 last_probe = memcache.get("last_probe")
 if last_probe == None:
   last_probe = Sample.all().order('-time').get()
-if datetime.now() - last_probe.time > timedelta(minutes=1):
+if (last_probe == None or
+    datetime.now() - last_probe.time > timedelta(minutes=1)):
   status, details, latency = check(URL)
   last_probe = Sample(status=status, details=details, latency=latency)
   last_probe.put()

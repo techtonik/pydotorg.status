@@ -46,6 +46,7 @@ version 1: need a service to monitor python.org site
 version 2: optimize the code to squeeze into AppEngine quota
            (currently 1 req/minute takes 30% of CPU monthly)
  [x] avoid template rendering overhead when probing
+     (CPU/sec dropped from 0.004+ to 0.003- per probe)
 
 
 License :: Public Domain or MIT

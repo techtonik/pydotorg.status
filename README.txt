@@ -37,6 +37,7 @@ design and task backlog
 maintenance backlog
 -------------------
 [x] choose Django version explicitly to avoid complains in logs
+[x] switch templates from webapp to using Django directly
 
 user story evolution
 --------------------

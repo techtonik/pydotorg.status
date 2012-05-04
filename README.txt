@@ -38,6 +38,7 @@ maintenance backlog
 -------------------
 [x] choose Django version explicitly to avoid complains in logs
 [x] switch templates from webapp to using Django directly
+[x] switch to Python 2.7
 
 user story evolution
 --------------------

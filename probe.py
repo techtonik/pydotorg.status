@@ -52,7 +52,7 @@ def probe():
   ''' Probe site, limit attempts to one per minute, return last probe '''
   last_probe = memcache.get("last_probe")
   if last_probe == None:
-    last_probe = models.Sample.all().order('-time').get()
+    last_probe = models.Sample.query().order(-models.Sample.time).get()
   if (last_probe == None or
       datetime.now() - last_probe.time > timedelta(minutes=1)):
     status, details, latency = check(URL)

@@ -15,7 +15,7 @@ title = 'status of python.org services'
 last_probe = probe.probe()
 
 # render stats for last 7 measurements
-probes = models.Sample.all().order('-time').fetch(limit=7)
+probes = models.Sample.query().order(-models.Sample.time).fetch(limit=7)
 
 print django.template.loader.render_to_string('status.html',
                       dict(title=title,

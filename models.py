@@ -1,18 +1,18 @@
 # -- models for storing data in AppEngine datastore --
 
-from google.appengine.ext import db
+from google.appengine.ext import ndb
 
 OK = 'OK'
 FAIL = 'FAIL'
 WARNING = 'WARNING'
 UNKNOWN = 'UNKNOWN'
 
-class Sample(db.Model):
-  time = db.DateTimeProperty(required=True, auto_now_add=True)
+class Sample(ndb.Model):
+  time = ndb.DateTimeProperty(required=True, auto_now_add=True)
   # status is one of OK, FAIL, WARNING, UNKNOWN
   # [ ] try enum
-  status = db.StringProperty(required=True)
-  details = db.StringProperty(required=True)
+  status = ndb.StringProperty(required=True)
+  details = ndb.StringProperty(required=True)
   # [ ] migration for latency require=True
-  latency = db.FloatProperty(required=False)
+  latency = ndb.FloatProperty(required=False)
 

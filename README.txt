@@ -40,6 +40,7 @@ maintenance backlog
 [x] switch templates from webapp to using Django directly
 [x] switch to High Replication Datastore (HRD)
 [x] switch to Python 2.7
+[x] switch to NDB
 
 user story evolution
 --------------------
@@ -52,7 +53,7 @@ version 2: optimize the code to squeeze into AppEngine quota
      (CPU/sec dropped from 0.004+ to 0.003- per probe)
  (before migration to HRD and Python 2.7 cpm_usd was about 0.0055)
  (after migration to HRD cpm_usd raised to 0.012 on average)
-version 3: switch to Python 2.7
+version 3: switch to Python 2.7 and NDB
 
 
 License :: Public Domain or MIT

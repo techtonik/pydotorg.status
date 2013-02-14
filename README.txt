@@ -1,4 +1,3 @@
-
 monitor status of python.org services
 
 
@@ -65,3 +64,6 @@ Authors ::
 references
 ----------
 http://code.google.com/status/appengine
+
+http://www.pypi-mirrors.org/
+https://github.com/kencochrane/pypi-mirrors
